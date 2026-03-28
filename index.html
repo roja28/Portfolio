@@ -1589,9 +1589,25 @@
 
   /* ===== RESPONSIVE - MOBILE LARGE (481px - 768px) ===== */
   @media (max-width: 768px) {
-    /* DISABLE problematic animations ONLY - keep entrance animations */
+    /* HIDE background elements completely */
+    html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+    }
+    
     body::before,
-    body::after,
+    body::after {
+      display: none !important;
+    }
+    
+    /* Ensure all sections are 100% width */
+    section, nav, footer, .hero-container, .about-container, .projects-container, .contact-container, .calling-card-container {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+    }
+    
+    /* DISABLE problematic animations ONLY - keep entrance animations */
     .hero-stripes,
     .diamond,
     .slash,
