@@ -1589,7 +1589,7 @@
 
   /* ===== RESPONSIVE - MOBILE LARGE (481px - 768px) ===== */
   @media (max-width: 768px) {
-    /* HIDE background elements completely */
+    /* HIDE body::before/after ONLY - these cause layout issues */
     html, body {
       overflow-x: hidden !important;
       width: 100% !important;
@@ -1607,47 +1607,15 @@
       overflow-x: hidden !important;
     }
     
-    /* DISABLE problematic animations ONLY - keep entrance animations */
-    .hero-stripes,
-    .diamond,
-    .slash,
-    .floating-circle,
-    .sparkle,
-    .particle,
-    #calling-card::before,
-    #calling-card::after,
-    .hero-photo,
-    .summoning-circle,
-    .photo-splatter,
-    .photo-decoration,
-    .photo-diamond,
-    .photo-mask-overlay,
-    .hero-tagline::before,
-    .hero-tagline::after,
-    .exp-card::before,
-    .exp-card::after,
-    .info-card::before,
-    .skill-category-title::after,
-    .contact-item::before,
-    .nav-brand::after,
-    .hero-desc::before {
+    /* DISABLE calling card rotation (causes issues) but keep pattern */
+    #calling-card::before {
+      animation: none !important;
+    }
+    #calling-card::after {
       animation: none !important;
     }
     
-    /* KEEP entrance animations for content visibility */
-    .hero-content h1 span,
-    .hero-tagline,
-    .hero-desc,
-    .hero-buttons,
-    .section-title,
-    .calling-card-title,
-    .calling-card-text,
-    .calling-card-signature,
-    .reveal {
-      /* DO NOT disable these animations - they make content visible */
-    }
-    
-    /* Disable transitions on interactive elements */
+    /* DISABLE hover transitions on interactive elements */
     .nav-menu li a::before,
     .nav-menu li a::after,
     .skill-tag::before,
@@ -1679,6 +1647,7 @@
     .hero-desc { font-size: 12px; line-height: 1.7; margin-bottom: 30px; }
     .hero-desc::before { font-size: 60px; margin-top: -25px; margin-left: -10px; }
     
+    /* PHOTO RESTORED */
     .photo-wrapper { width: 220px; height: 280px; }
     .summoning-circle { width: 280px; height: 280px; }
     .summoning-circle::after { font-size: 14px; letter-spacing: 10px; }
