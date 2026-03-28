@@ -76,10 +76,6 @@ Universitas Dian Nuswantoro (2020 - 2025)
 - **Ketua Komisi A** — MPK SMA N 1 Weleri (2018 - 2019)
 - **Anggota** — MPK SMA N 1 Weleri (2017 - 2018)
 
-## 📜 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
 ---
 
 <p align="center">
