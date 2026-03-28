@@ -1589,22 +1589,11 @@
 
   /* ===== RESPONSIVE - MOBILE LARGE (481px - 768px) ===== */
   @media (max-width: 768px) {
-    /* Disable background animations on mobile */
-    body::before {
-      animation: none !important;
-    }
-    body::after {
-      animation: none !important;
-    }
-    .hero-stripes {
-      animation: none !important;
-    }
-    /* Disable calling card animations on mobile */
-    #calling-card::before {
-      animation: none !important;
-    }
-    #calling-card::after {
-      animation: none !important;
+    /* DISABLE ALL ANIMATIONS on mobile to fix navbar issue */
+    *, *::before, *::after {
+      animation-duration: 0.001s !important;
+      animation-delay: 0s !important;
+      transition-duration: 0.001s !important;
     }
     
     nav {
