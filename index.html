@@ -128,7 +128,7 @@
     100% { opacity: 1; }
   }
 
-  /* ===== FLOATING DIAMONDS (Reduced from 10 to 4) ===== */
+  /* ===== FLOATING DIAMONDS ===== */
   .diamond {
     position: fixed;
     background: var(--red);
@@ -136,17 +136,132 @@
     pointer-events: none;
     z-index: 0;
     opacity: 0.15;
-    animation: floatDiamond 12s infinite ease-in-out;
+    animation: floatDiamond 8s infinite ease-in-out;
+    box-shadow: 0 0 20px rgba(230,0,18,0.5);
   }
 
-  .diamond:nth-child(1) { top: 15%; left: 10%; width: 30px; height: 30px; animation-delay: 0s; }
-  .diamond:nth-child(2) { top: 25%; right: 15%; width: 25px; height: 25px; animation-delay: 3s; background: var(--gold); }
-  .diamond:nth-child(3) { top: 60%; left: 5%; width: 35px; height: 35px; animation-delay: 6s; }
-  .diamond:nth-child(4) { top: 75%; right: 10%; width: 28px; height: 28px; animation-delay: 9s; background: var(--gold); }
+  .diamond:nth-child(1) { top: 10%; left: 8%; width: 35px; height: 35px; animation-delay: 0s; animation-duration: 6s; }
+  .diamond:nth-child(2) { top: 20%; right: 12%; width: 30px; height: 30px; animation-delay: 1s; background: var(--gold); box-shadow: 0 0 20px rgba(212,175,55,0.5); }
+  .diamond:nth-child(3) { top: 55%; left: 3%; width: 40px; height: 40px; animation-delay: 2s; animation-duration: 10s; }
+  .diamond:nth-child(4) { top: 70%; right: 6%; width: 25px; height: 25px; animation-delay: 3s; background: var(--gold); box-shadow: 0 0 20px rgba(212,175,55,0.5); }
 
   @keyframes floatDiamond {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-30px) rotate(180deg); }
+    0%, 100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.15; }
+    25% { transform: translateY(-40px) rotate(90deg) scale(1.1); opacity: 0.25; }
+    50% { transform: translateY(0) rotate(180deg) scale(1); opacity: 0.15; }
+    75% { transform: translateY(40px) rotate(270deg) scale(1.1); opacity: 0.25; }
+  }
+
+  /* ===== SLASH MARKS ===== */
+  .slash-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .slash {
+    position: absolute;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--red), transparent);
+    transform: rotate(-25deg);
+    opacity: 0;
+    animation: slashAppear 4s infinite;
+  }
+
+  .slash:nth-child(1) { top: 5%; left: 15%; height: 180px; animation-delay: 0s; }
+  .slash:nth-child(2) { top: 25%; right: 20%; height: 130px; transform: rotate(15deg); animation-delay: 0.5s; }
+  .slash:nth-child(3) { top: 45%; left: 70%; height: 160px; animation-delay: 1s; }
+  .slash:nth-child(4) { top: 65%; left: 10%; height: 110px; transform: rotate(-35deg); animation-delay: 1.5s; }
+  .slash:nth-child(5) { top: 15%; right: 8%; height: 150px; transform: rotate(20deg); animation-delay: 2s; }
+  .slash:nth-child(6) { top: 75%; left: 45%; height: 120px; animation-delay: 2.5s; }
+  .slash:nth-child(7) { top: 35%; left: 5%; height: 90px; transform: rotate(30deg); background: linear-gradient(to bottom, var(--gold), transparent); animation-delay: 3s; }
+  .slash:nth-child(8) { top: 55%; right: 35%; height: 110px; transform: rotate(-15deg); background: linear-gradient(to bottom, var(--gold), transparent); animation-delay: 3.5s; }
+
+  @keyframes slashAppear {
+    0%, 60%, 100% { opacity: 0; transform: rotate(-25deg) translateX(-20px); }
+    10%, 50% { opacity: 0.25; transform: rotate(-25deg) translateX(0); }
+  }
+
+  /* ===== FLOATING CIRCLES ===== */
+  .floating-circle {
+    position: fixed;
+    border-radius: 50%;
+    border: 2px solid var(--red);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    animation: floatCircle 6s infinite ease-in-out;
+  }
+
+  .floating-circle:nth-child(1) { top: 20%; left: 25%; width: 70px; height: 70px; animation-delay: 0s; }
+  .floating-circle:nth-child(2) { top: 60%; right: 15%; width: 90px; height: 90px; animation-delay: 1.5s; border-color: var(--gold); }
+  .floating-circle:nth-child(3) { top: 40%; left: 75%; width: 50px; height: 50px; animation-delay: 3s; }
+  .floating-circle:nth-child(4) { top: 80%; left: 30%; width: 80px; height: 80px; animation-delay: 4.5s; border-color: var(--gold); }
+
+  @keyframes floatCircle {
+    0%, 100% { transform: scale(0.5) rotate(0deg); opacity: 0; }
+    20%, 80% { opacity: 0.12; }
+    50% { transform: scale(1.2) rotate(180deg); opacity: 0.2; }
+  }
+
+  /* ===== SPARKLE EFFECTS ===== */
+  .sparkle {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: sparkle 2s infinite;
+    box-shadow: 0 0 12px var(--gold);
+  }
+
+  .sparkle:nth-child(1) { top: 15%; left: 50%; animation-delay: 0s; }
+  .sparkle:nth-child(2) { top: 30%; left: 20%; animation-delay: 0.3s; }
+  .sparkle:nth-child(3) { top: 50%; right: 10%; animation-delay: 0.6s; }
+  .sparkle:nth-child(4) { top: 70%; left: 60%; animation-delay: 0.9s; }
+  .sparkle:nth-child(5) { top: 25%; right: 30%; animation-delay: 1.2s; }
+  .sparkle:nth-child(6) { top: 85%; left: 40%; animation-delay: 1.5s; }
+  .sparkle:nth-child(7) { top: 40%; left: 80%; animation-delay: 1.8s; }
+  .sparkle:nth-child(8) { top: 60%; left: 10%; animation-delay: 2.1s; }
+
+  @keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.3) rotate(180deg); }
+  }
+
+  /* ===== RED SPLASH PARTICLES ===== */
+  .particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: particleFloat 10s infinite linear;
+    opacity: 0;
+  }
+
+  .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+  .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
+  .particle:nth-child(3) { left: 30%; animation-delay: 2s; }
+  .particle:nth-child(4) { left: 40%; animation-delay: 3s; }
+  .particle:nth-child(5) { left: 50%; animation-delay: 4s; }
+  .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+  .particle:nth-child(7) { left: 70%; animation-delay: 6s; }
+  .particle:nth-child(8) { left: 80%; animation-delay: 7s; }
+  .particle:nth-child(9) { left: 90%; animation-delay: 8s; }
+  .particle:nth-child(10) { left: 15%; animation-delay: 9s; }
+
+  @keyframes particleFloat {
+    0% { top: 110%; opacity: 0; transform: scale(0); }
+    10% { opacity: 0.7; transform: scale(1); }
+    90% { opacity: 0.7; }
+    100% { top: -10%; opacity: 0; transform: scale(0); }
   }
 
   /* ===== NAVIGATION ===== */
@@ -613,6 +728,26 @@
     position: relative;
   }
 
+  #about::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 100%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(230,0,18,0.03) 40px,
+      rgba(230,0,18,0.03) 80px
+    );
+    pointer-events: none;
+    animation: diagonalMove 30s linear infinite;
+  }
+
+  @keyframes diagonalMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 80px 80px; }
+  }
+
   .about-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -871,7 +1006,7 @@
     overflow: hidden;
   }
 
-  /* Concentric Circle (Bullseye) Pattern - Static version */
+  /* Concentric Circle (Bullseye) Pattern */
   #calling-card::before {
     content: '';
     position: absolute;
@@ -896,7 +1031,13 @@
       var(--black) 88%, var(--black) 96%,
       var(--red) 96%, var(--red) 100%
     );
+    animation: bullseyeRotate 40s linear infinite;
     pointer-events: none;
+  }
+
+  @keyframes bullseyeRotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
   }
 
   .calling-card-container {
@@ -1432,11 +1573,51 @@
   <div class="date" id="currentDate"></div>
 </div>
 
-<!-- FLOATING DIAMONDS (Reduced to 4) -->
+<!-- FLOATING DIAMONDS -->
 <div class="diamond"></div>
 <div class="diamond"></div>
 <div class="diamond"></div>
 <div class="diamond"></div>
+
+<!-- SLASH MARKS -->
+<div class="slash-container">
+  <div class="slash"></div>
+  <div class="slash"></div>
+  <div class="slash"></div>
+  <div class="slash"></div>
+  <div class="slash"></div>
+  <div class="slash"></div>
+  <div class="slash"></div>
+  <div class="slash"></div>
+</div>
+
+<!-- FLOATING CIRCLES -->
+<div class="floating-circle"></div>
+<div class="floating-circle"></div>
+<div class="floating-circle"></div>
+<div class="floating-circle"></div>
+
+<!-- SPARKLE EFFECTS -->
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+
+<!-- RED SPLASH PARTICLES -->
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
 
 <!-- NAVIGATION -->
 <nav>
