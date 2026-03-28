@@ -204,6 +204,7 @@
     height: 70px;
     border-bottom: 4px solid var(--red);
     animation: navSlide 1s ease-out;
+    will-change: transform;
   }
 
   @keyframes navSlide {
@@ -533,7 +534,7 @@
     overflow: visible;
   }
 
-  /* Persona Summoning Circle */
+  /* Persona Summoning Circle (OPTIMIZED) */
   .summoning-circle {
     position: absolute;
     top: 50%;
@@ -544,9 +545,10 @@
     border: 3px solid var(--red);
     border-radius: 50%;
     opacity: 0;
-    animation: circleAppear 1s ease-out 2s forwards, circleRotate 20s linear infinite 3s;
+    animation: circleAppear 1s ease-out 2s forwards;
     pointer-events: none;
     z-index: -1;
+    will-change: opacity;
   }
 
   .summoning-circle::before {
@@ -555,7 +557,7 @@
     top: 10px; left: 10px; right: 10px; bottom: 10px;
     border: 2px solid var(--gold);
     border-radius: 50%;
-    animation: circleRotate 15s linear infinite reverse;
+    /* No animation - static */
   }
 
   .summoning-circle::after {
@@ -571,13 +573,8 @@
   }
 
   @keyframes circleAppear {
-    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) rotate(-180deg); }
-    100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
-  }
-
-  @keyframes circleRotate {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+    100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
   }
 
   .photo-frame {
@@ -1468,6 +1465,9 @@
     nav { 
       padding: 0 24px; 
       height: 60px;
+      backdrop-filter: none !important;
+      background: rgba(13,13,13,0.98) !important;
+      animation: none !important;
     }
     .nav-menu li a { 
       padding: 18px 14px; 
@@ -1575,6 +1575,9 @@
     nav {
       padding: 0 16px;
       height: 55px;
+      backdrop-filter: none !important;
+      background: rgba(13,13,13,0.98) !important;
+      animation: none !important;
     }
     .nav-brand { font-size: 20px; letter-spacing: 3px; }
     .nav-brand::after { right: -15px; font-size: 8px; }
