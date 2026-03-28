@@ -1551,11 +1551,11 @@
       justify-content: center; 
     }
     .photo-wrapper { width: 260px; height: 320px; }
-    .summoning-circle { width: 320px; height: 320px; }
-    .photo-splatter { width: 80px; height: 80px; top: -15px; left: -15px; }
-    .photo-decoration { font-size: 50px; top: -20px; right: -20px; }
-    .photo-diamond { width: 40px; height: 40px; bottom: 40px; right: -30px; }
-    .photo-label { padding: 10px 20px; font-size: 12px; bottom: -15px; left: -15px; }
+    .summoning-circle { width: 380px; height: 380px; }
+    .photo-splatter { width: 80px; height: 80px; top: -15px; left: 32%; }
+    .photo-decoration { font-size: 50px; top: -20px; right: 28%; }
+    .photo-diamond { width: 40px; height: 40px; bottom: 40px; right: 25%; }
+    .photo-label { padding: 10px 20px; font-size: 12px; bottom: -15px; left: 32%; }
     
     .hero-buttons { justify-content: center; gap: 12px; }
     .btn { padding: 12px 24px; font-size: 12px; }
@@ -1668,7 +1668,7 @@
       display: none;
     }
     
-    /* FIX POSISI ELEMEN DEKORASI MOBILE */
+    /* FIX POSISI ELEMEN DEKORASI MOBILE - DITENGAHKAN DI SEKITAR FRAME */
     .photo-wrapper {
       position: relative;
       width: 220px;
@@ -1685,30 +1685,34 @@
     }
     
     .photo-splatter {
-      width: 50px !important;
-      height: 50px !important;
-      top: -8px !important;
-      left: -8px !important;
+      width: 70px !important;
+      height: 70px !important;
+      top: -10px !important;
+      left: 90px !important;
+      transform: rotate(-15deg) !important;
     }
     
     .photo-decoration {
-      font-size: 35px !important;
-      top: -12px !important;
-      right: -12px !important;
+      font-size: 45px !important;
+      top: -10px !important;
+      right: 45px !important;
+      left: auto !important;
     }
     
     .photo-diamond {
-      width: 25px !important;
-      height: 25px !important;
-      bottom: 25px !important;
-      right: -15px !important;
+      width: 35px !important;
+      height: 35px !important;
+      bottom: 20px !important;
+      right: 40px !important;
+      left: auto !important;
     }
     
     .photo-label {
-      padding: 6px 12px !important;
-      font-size: 9px !important;
-      bottom: -10px !important;
-      left: -10px !important;
+      padding: 8px 16px !important;
+      font-size: 10px !important;
+      bottom: -8px !important;
+      left: 150px !important;
+      transform: translateX(-50%) !important;
     }
     
     .photo-hint {
