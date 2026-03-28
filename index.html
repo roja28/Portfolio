@@ -1589,9 +1589,53 @@
 
   /* ===== RESPONSIVE - MOBILE LARGE (481px - 768px) ===== */
   @media (max-width: 768px) {
-    /* DISABLE ALL ANIMATIONS on mobile to fix navbar issue */
-    *, *::before, *::after {
+    /* DISABLE problematic animations ONLY - keep entrance animations */
+    body::before,
+    body::after,
+    .hero-stripes,
+    .diamond,
+    .slash,
+    .floating-circle,
+    .sparkle,
+    .particle,
+    #calling-card::before,
+    #calling-card::after,
+    .hero-photo,
+    .summoning-circle,
+    .photo-splatter,
+    .photo-decoration,
+    .photo-diamond,
+    .photo-mask-overlay,
+    .hero-tagline::before,
+    .hero-tagline::after,
+    .exp-card::before,
+    .exp-card::after,
+    .info-card::before,
+    .skill-category-title::after,
+    .contact-item::before,
+    .nav-brand::after,
+    .hero-desc::before {
       animation: none !important;
+    }
+    
+    /* KEEP entrance animations for content visibility */
+    .hero-content h1 span,
+    .hero-tagline,
+    .hero-desc,
+    .hero-buttons,
+    .section-title,
+    .calling-card-title,
+    .calling-card-text,
+    .calling-card-signature,
+    .reveal {
+      /* DO NOT disable these animations - they make content visible */
+    }
+    
+    /* Disable transitions on interactive elements */
+    .nav-menu li a::before,
+    .nav-menu li a::after,
+    .skill-tag::before,
+    .skill-tag::after {
       transition: none !important;
     }
     
