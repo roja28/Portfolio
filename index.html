@@ -1461,6 +1461,24 @@
 
   /* ===== RESPONSIVE - TABLET (769px - 900px) ===== */
   @media (max-width: 900px) {
+    /* Disable background animations on mobile */
+    body::before {
+      animation: none !important;
+    }
+    body::after {
+      animation: none !important;
+    }
+    .hero-stripes {
+      animation: none !important;
+    }
+    /* Disable calling card animations on mobile */
+    #calling-card::before {
+      animation: none !important;
+    }
+    #calling-card::after {
+      animation: none !important;
+    }
+    
     nav { 
       padding: 0 24px; 
       height: 60px;
@@ -1571,6 +1589,24 @@
 
   /* ===== RESPONSIVE - MOBILE LARGE (481px - 768px) ===== */
   @media (max-width: 768px) {
+    /* Disable background animations on mobile */
+    body::before {
+      animation: none !important;
+    }
+    body::after {
+      animation: none !important;
+    }
+    .hero-stripes {
+      animation: none !important;
+    }
+    /* Disable calling card animations on mobile */
+    #calling-card::before {
+      animation: none !important;
+    }
+    #calling-card::after {
+      animation: none !important;
+    }
+    
     nav {
       padding: 0 16px;
       height: 55px;
