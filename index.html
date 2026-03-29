@@ -78,37 +78,125 @@
     overflow-x: hidden;
   }
 
-  /* ===== HALFTONE DOT PATTERN ===== */
-  body::before {
+  /* ===== NEON BLUR BACKGROUND ANIMATION ===== */
+  #hero::before {
     content: '';
-    position: fixed;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(230,0,18,0.12) 2px, transparent 2px);
-    background-size: 25px 25px;
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 30%, rgba(230,0,18,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(212,175,55,0.1) 0%, transparent 50%);
+    filter: blur(80px);
+    animation: neonBlur 10s ease-in-out infinite;
     pointer-events: none;
     z-index: 0;
-    animation: halftoneMove 20s linear infinite;
   }
 
-  @keyframes halftoneMove {
-    0% { background-position: 0 0; }
-    100% { background-position: 25px 25px; }
-  }
-
-  /* ===== ANIMATED BACKGROUND GRADIENT ===== */
-  body::after {
+  #hero::after {
     content: '';
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(45deg, rgba(230,0,18,0.05) 0%, transparent 50%, rgba(212,175,55,0.05) 100%);
+    position: absolute;
+    bottom: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 70% 30%, rgba(212,175,55,0.12) 0%, transparent 50%),
+                radial-gradient(circle at 30% 70%, rgba(230,0,18,0.1) 0%, transparent 50%);
+    filter: blur(100px);
+    animation: neonBlur 12s ease-in-out infinite reverse;
     pointer-events: none;
     z-index: 0;
-    animation: gradientShift 10s ease infinite;
   }
 
-  @keyframes gradientShift {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
+  @keyframes neonBlur {
+    0%, 100% { 
+      transform: translate(0, 0) scale(1);
+      opacity: 0.6;
+    }
+    25% { 
+      transform: translate(5%, 5%) scale(1.05);
+      opacity: 0.8;
+    }
+    50% { 
+      transform: translate(0, 10%) scale(1.1);
+      opacity: 0.7;
+    }
+    75% { 
+      transform: translate(-5%, 5%) scale(1.05);
+      opacity: 0.8;
+    }
+  }
+
+  /* Floating light particles */
+  .hero-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: particleFloat 8s ease-in-out infinite;
+    box-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold);
+  }
+
+  .particle:nth-child(1) {
+    left: 15%;
+    animation-delay: 0s;
+    animation-duration: 7s;
+  }
+
+  .particle:nth-child(2) {
+    left: 45%;
+    animation-delay: 2s;
+    animation-duration: 9s;
+    background: var(--red);
+    box-shadow: 0 0 10px var(--red), 0 0 20px var(--red);
+  }
+
+  .particle:nth-child(3) {
+    left: 75%;
+    animation-delay: 4s;
+    animation-duration: 8s;
+  }
+
+  .particle:nth-child(4) {
+    left: 30%;
+    animation-delay: 1s;
+    animation-duration: 10s;
+    background: var(--red);
+    box-shadow: 0 0 10px var(--red), 0 0 20px var(--red);
+  }
+
+  @keyframes particleFloat {
+    0% {
+      bottom: -10px;
+      opacity: 0;
+      transform: translateX(0) scale(0);
+    }
+    10% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+    }
+    90% {
+      opacity: 0.3;
+    }
+    100% {
+      bottom: 110%;
+      opacity: 0;
+      transform: translateX(20px) scale(0.5);
+    }
   }
 
   /* ===== DATE DISPLAY (P5 CALENDAR STYLE) ===== */
@@ -141,58 +229,7 @@
     100% { opacity: 1; }
   }
 
-  /* ===== FLOATING DIAMOND SHAPES (OPTIMIZED) ===== */
-  .diamond {
-    position: fixed;
-    background: var(--red);
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    pointer-events: none;
-    z-index: 0;
-    will-change: transform;
-    animation: floatDiamond 8s infinite ease-in-out;
-    box-shadow: 0 0 20px rgba(230,0,18,0.4);
-  }
-
-  .diamond:nth-child(1) { top: 10%; left: 8%; width: 35px; height: 35px; animation-delay: 0s; animation-duration: 7s; }
-  .diamond:nth-child(2) { top: 20%; right: 12%; width: 30px; height: 30px; animation-delay: 1.5s; background: var(--gold); box-shadow: 0 0 20px rgba(212,175,55,0.4); }
-  .diamond:nth-child(3) { top: 55%; left: 3%; width: 40px; height: 40px; animation-delay: 3s; animation-duration: 9s; }
-  .diamond:nth-child(4) { top: 70%; right: 6%; width: 25px; height: 25px; animation-delay: 4.5s; background: var(--gold); box-shadow: 0 0 20px rgba(212,175,55,0.4); }
-  .diamond:nth-child(5) { top: 35%; left: 88%; width: 28px; height: 28px; animation-delay: 6s; animation-duration: 8s; }
-  .diamond:nth-child(6) { top: 80%; left: 15%; width: 35px; height: 35px; animation-delay: 7.5s; background: var(--gold); box-shadow: 0 0 20px rgba(212,175,55,0.4); }
-
-  @keyframes floatDiamond {
-    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.15; }
-    50% { transform: translateY(-30px) rotate(180deg); opacity: 0.3; }
-  }
-
-  /* ===== SLASH MARKS (OPTIMIZED) ===== */
-  .slash-container {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-  }
-
-  .slash {
-    position: absolute;
-    width: 4px;
-    background: linear-gradient(to bottom, var(--red), transparent);
-    transform: rotate(-25deg);
-    opacity: 0;
-    will-change: opacity;
-    animation: slashAppear 5s infinite;
-  }
-
-  .slash:nth-child(1) { top: 5%; left: 15%; height: 180px; animation-delay: 0s; }
-  .slash:nth-child(2) { top: 25%; right: 20%; height: 140px; transform: rotate(15deg); animation-delay: 1s; }
-  .slash:nth-child(3) { top: 45%; left: 70%; height: 160px; animation-delay: 2s; }
-  .slash:nth-child(4) { top: 65%; left: 10%; height: 120px; transform: rotate(-35deg); animation-delay: 3s; background: linear-gradient(to bottom, var(--gold), transparent); }
-
-  @keyframes slashAppear {
-    0%, 70%, 100% { opacity: 0; }
-    10%, 60% { opacity: 0.25; }
-  }
+  /* Decorative elements CSS removed for performance */
 
   /* ===== NAVIGATION ===== */
   nav {
@@ -291,50 +328,7 @@
     overflow: hidden;
   }
 
-  #hero::before {
-    content: '';
-    position: absolute;
-    top: -100px; right: -100px;
-    width: 500px; height: 500px;
-    background: radial-gradient(ellipse, rgba(230,0,18,0.3) 0%, transparent 60%);
-    pointer-events: none;
-    animation: paintPulse 4s infinite;
-  }
-
-  @keyframes paintPulse {
-    0%, 100% { transform: scale(1); opacity: 0.3; }
-    50% { transform: scale(1.1); opacity: 0.5; }
-  }
-
-  #hero::after {
-    content: '';
-    position: absolute;
-    bottom: -150px; left: -150px;
-    width: 600px; height: 600px;
-    background: radial-gradient(ellipse, rgba(212,175,55,0.2) 0%, transparent 60%);
-    pointer-events: none;
-    animation: paintPulse 5s infinite reverse;
-  }
-
-  .hero-stripes {
-    position: absolute;
-    top: 0; right: 0;
-    width: 500px; height: 100%;
-    background: repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 15px,
-      rgba(230,0,18,0.05) 15px,
-      rgba(230,0,18,0.05) 30px
-    );
-    pointer-events: none;
-    animation: stripesMove 20s linear infinite;
-  }
-
-  @keyframes stripesMove {
-    0% { background-position: 0 0; }
-    100% { background-position: 30px 30px; }
-  }
+  /* Hero background animations removed for performance */
 
   .hero-container {
     max-width: 1200px;
@@ -374,13 +368,8 @@
   .hero-content h1 .name {
     color: var(--red);
     text-shadow: 0 0 60px rgba(230,0,18,0.5);
-    animation: glowText 2s infinite alternate, titleReveal 1s ease-out 0.7s forwards;
+    animation: titleReveal 1s ease-out 0.7s forwards;
     opacity: 0;
-  }
-
-  @keyframes glowText {
-    0% { text-shadow: 0 0 60px rgba(230,0,18,0.5); }
-    100% { text-shadow: 0 0 120px rgba(230,0,18,0.9), 0 0 200px rgba(230,0,18,0.4); }
   }
 
   .hero-content h1 .title {
@@ -435,12 +424,7 @@
     position: absolute;
     margin-top: -40px;
     margin-left: -20px;
-    animation: quotePulse 3s infinite;
-  }
-
-  @keyframes quotePulse {
-    0%, 100% { opacity: 0.2; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(1.1); }
+    /* Animation removed for performance */
   }
 
   .hero-buttons {
@@ -519,6 +503,9 @@
     position: relative;
     animation: photoEntrance 1.5s ease-out 0.3s forwards;
     opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   @keyframes photoEntrance {
@@ -531,6 +518,7 @@
     position: relative;
     width: 350px; height: 420px;
     overflow: visible;
+    margin: 0 auto;
   }
 
   /* Persona Summoning Circle (OPTIMIZED) */
@@ -576,6 +564,45 @@
     100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
   }
 
+  /* Golden Summoning Circle - Rotating */
+  .summoning-circle-gold {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 480px;
+    height: 480px;
+    border: 2px dashed var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: circleGoldAppear 1s ease-out 2.5s forwards;
+    pointer-events: none;
+    z-index: -2;
+    will-change: opacity, transform;
+  }
+
+  .summoning-circle-gold::after {
+    content: '✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    color: var(--gold);
+    letter-spacing: 12px;
+    opacity: 0.6;
+  }
+
+  @keyframes circleGoldAppear {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); }
+    100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  }
+
+  @keyframes circleGoldSpin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
   .photo-frame {
     width: 100%; height: 100%;
     border: 5px solid var(--red);
@@ -613,12 +640,7 @@
     background: linear-gradient(180deg, rgba(230,0,18,0.3) 0%, transparent 100%);
     pointer-events: none;
     z-index: 2;
-    animation: maskPulse 3s infinite;
-  }
-
-  @keyframes maskPulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+    /* Animation removed for performance */
   }
 
   .photo-hint {
@@ -650,24 +672,21 @@
 
   .photo-splatter {
     position: absolute;
-    top: -25px; left: -25px;
+    top: -25px;
+    left: calc(50% - 200px);
     width: 120px; height: 120px;
     background: radial-gradient(ellipse at 30% 30%, var(--red) 0%, transparent 70%);
     border-radius: 50% 40% 60% 30%;
     transform: rotate(-15deg);
     opacity: 0.9;
     z-index: 4;
-    animation: splatterPulse 2s infinite;
-  }
-
-  @keyframes splatterPulse {
-    0%, 100% { transform: rotate(-15deg) scale(1); }
-    50% { transform: rotate(-10deg) scale(1.1); }
+    /* Animation removed for performance */
   }
 
   .photo-label {
     position: absolute;
-    bottom: -25px; left: -25px;
+    bottom: -25px;
+    left: calc(50% - 200px);
     background: var(--red);
     padding: 14px 28px;
     font-family: 'Anton', sans-serif;
@@ -686,11 +705,12 @@
 
   .photo-decoration {
     position: absolute;
-    top: -35px; right: -35px;
+    top: -35px;
+    right: calc(50% - 200px);
     font-size: 80px;
     filter: drop-shadow(0 0 30px rgba(230,0,18,0.7));
     z-index: 4;
-    animation: bounce 1.5s infinite, decorationEntrance 1s ease-out 0.5s forwards;
+    animation: decorationEntrance 1s ease-out 0.5s forwards;
     opacity: 0;
   }
 
@@ -699,26 +719,6 @@
     100% { opacity: 1; transform: scale(1) rotate(0deg); }
   }
 
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(5deg); }
-  }
-
-  .photo-diamond {
-    position: absolute;
-    bottom: 60px; right: -50px;
-    width: 60px; height: 60px;
-    background: var(--gold);
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    opacity: 0.7;
-    animation: pulseDiamond 1.5s infinite;
-    z-index: 4;
-  }
-
-  @keyframes pulseDiamond {
-    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; box-shadow: 0 0 20px rgba(212,175,55,0.5); }
-    50% { transform: scale(1.4) rotate(45deg); opacity: 1; box-shadow: 0 0 40px rgba(212,175,55,0.8); }
-  }
 
   /* ===== SECTION STYLES ===== */
   section {
@@ -1509,6 +1509,15 @@
     .hero-stripes {
       animation: none !important;
     }
+    /* Reduce neon blur for tablet */
+    #hero::before,
+    #hero::after {
+      filter: blur(40px) !important;
+      animation-duration: 15s !important;
+    }
+    .hero-particles .particle {
+      animation-duration: 12s !important;
+    }
     /* Disable calling card animations on mobile */
     #calling-card::before {
       animation: none !important;
@@ -1552,9 +1561,10 @@
     }
     .photo-wrapper { width: 260px; height: 320px; }
     .summoning-circle { width: 380px; height: 380px; }
+    .summoning-circle-gold { width: 410px; height: 410px; }
+    .summoning-circle-gold::after { font-size: 14px; letter-spacing: 10px; }
     .photo-splatter { width: 80px; height: 80px; top: -15px; left: 32%; }
     .photo-decoration { font-size: 50px; top: -20px; right: 28%; }
-    .photo-diamond { width: 40px; height: 40px; bottom: 40px; right: 25%; }
     .photo-label { padding: 10px 20px; font-size: 12px; bottom: -15px; left: 32%; }
     
     .hero-buttons { justify-content: center; gap: 12px; }
@@ -1627,6 +1637,17 @@
 
   /* ===== RESPONSIVE - MOBILE LARGE (481px - 768px) ===== */
   @media (max-width: 768px) {
+    /* Disable neon blur for mobile - too heavy */
+    #hero::before,
+    #hero::after {
+      filter: blur(30px) !important;
+      opacity: 0.3 !important;
+      animation-duration: 20s !important;
+    }
+    .hero-particles .particle {
+      display: none;
+    }
+    
     /* HAMBURGER MENU MOBILE */
     .hamburger {
       display: flex !important;
@@ -1684,18 +1705,38 @@
       transform: translate(-50%, -50%) !important;
     }
     
+    .summoning-circle-gold {
+      width: 310px !important;
+      height: 310px !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
+    }
+    
+    .summoning-circle-gold::before {
+      top: 15px !important;
+      left: 15px !important;
+      right: 15px !important;
+      bottom: 15px !important;
+    }
+    
+    .summoning-circle-gold::after {
+      font-size: 12px !important;
+      letter-spacing: 8px !important;
+    }
+    
     .photo-splatter {
       width: 70px !important;
       height: 70px !important;
       top: -10px !important;
-      left: 90px !important;
+      left: 22% !important;
       transform: rotate(-15deg) !important;
     }
     
     .photo-decoration {
       font-size: 45px !important;
       top: -10px !important;
-      right: 45px !important;
+      right: 20% !important;
       left: auto !important;
     }
     
@@ -1711,7 +1752,7 @@
       padding: 8px 16px !important;
       font-size: 10px !important;
       bottom: -8px !important;
-      left: 150px !important;
+      left: 40% !important;
       transform: translateX(-50%) !important;
     }
     
@@ -1783,7 +1824,6 @@
     .summoning-circle::after { font-size: 14px; letter-spacing: 10px; }
     .photo-splatter { width: 60px; height: 60px; top: -10px; left: -10px; }
     .photo-decoration { font-size: 40px; top: -15px; right: -15px; }
-    .photo-diamond { width: 30px; height: 30px; bottom: 30px; right: -20px; }
     .photo-label { padding: 8px 16px; font-size: 10px; bottom: -12px; left: -12px; }
     .photo-hint { padding: 8px 14px; font-size: 9px; }
     
@@ -1862,6 +1902,12 @@
 
   /* ===== RESPONSIVE - MOBILE SMALL (≤ 480px) ===== */
   @media (max-width: 480px) {
+    /* Disable neon blur for mobile small - too heavy */
+    #hero::before,
+    #hero::after {
+      display: none !important;
+    }
+    
     nav {
       padding: 0 12px;
       height: 50px;
@@ -1886,6 +1932,9 @@
     .summoning-circle { width: 230px; height: 230px; }
     .summoning-circle::after { font-size: 12px; letter-spacing: 8px; }
     .summoning-circle::before { top: 8px; left: 8px; right: 8px; bottom: 8px; }
+    .summoning-circle-gold { width: 260px; height: 260px; }
+    .summoning-circle-gold::after { font-size: 10px; letter-spacing: 6px; }
+    .summoning-circle-gold::before { top: 12px; left: 12px; right: 12px; bottom: 12px; }
     .photo-splatter { width: 50px; height: 50px; }
     .photo-decoration { font-size: 30px; top: -12px; right: -12px; }
     .photo-diamond { width: 25px; height: 25px; bottom: 25px; right: -15px; }
@@ -2015,21 +2064,7 @@
   <div class="date" id="currentDate"></div>
 </div>
 
-<!-- FLOATING DIAMOND SHAPES (OPTIMIZED) -->
-<div class="diamond"></div>
-<div class="diamond"></div>
-<div class="diamond"></div>
-<div class="diamond"></div>
-<div class="diamond"></div>
-<div class="diamond"></div>
-
-<!-- SLASH MARKS (OPTIMIZED) -->
-<div class="slash-container">
-  <div class="slash"></div>
-  <div class="slash"></div>
-  <div class="slash"></div>
-  <div class="slash"></div>
-</div>
+<!-- Decorative elements removed for performance -->
 
 <!-- NAVIGATION -->
 <nav>
@@ -2052,6 +2087,12 @@
 <!-- HERO SECTION -->
 <section id="hero">
   <div class="hero-stripes"></div>
+  <div class="hero-particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
   <div class="hero-container">
     <div class="hero-content">
       <div class="hero-tagline">WEB DEVELOPER</div>
@@ -2072,6 +2113,7 @@
     </div>
     <div class="hero-photo">
       <div class="summoning-circle"></div>
+      <div class="summoning-circle-gold"></div>
       <div class="photo-splatter"></div>
       <div class="photo-wrapper">
         <div class="photo-frame" id="photoFrame">
@@ -2083,7 +2125,6 @@
       </div>
       <div class="photo-label">TAKE YOUR HEART</div>
       <div class="photo-decoration">🎭</div>
-      <div class="photo-diamond"></div>
     </div>
   </div>
 </section>
@@ -2354,7 +2395,7 @@
         <div class="contact-icon">📱</div>
         <div class="contact-label">TELEPON</div>
         <div class="contact-value">
-          <a href="tel:0895413421109">0895413421109</a>
+          <a href="https://wa.me/0895413421109">0895413421109</a>
         </div>
       </div>
       <div class="contact-item reveal">
@@ -2382,7 +2423,15 @@
 
 <script>
   // ===== LOADING SCREEN =====
+  // Disable browser's automatic scroll restoration
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  
+  // Scroll to top on page load/refresh
   window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+    
     setTimeout(() => {
       document.getElementById('loadingScreen').classList.add('hidden');
     }, 2500);
