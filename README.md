@@ -25,7 +25,8 @@ Portfolio/
 ├── index.html          # Main portfolio page
 └── images/
     ├── foto.jpg        # Profile photo
-    └── roja-persona.png # Alternative photo 
+    ├── roja-persona.png # Alternative photo
+    └── CV Roja Firmanda.png # Resume/CV 
 ```
 
 ## ✨ Features
