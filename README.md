@@ -4,7 +4,8 @@ Personal portfolio website showcasing my projects, skills, and experience as a W
 
 ## 🚀 Live Demo
 
-**[View Portfolio](https://roja28.github.io/Portfolio/)**
+**[View Portfolio](https://roja28.github.io/Portfolio/)** -- Github Pages
+**[View Portfolio](https://portfolio-theta-lovat-74.vercel.app/)** -- Vercel
 
 ## 📋 About
 
@@ -13,10 +14,8 @@ Fresh Graduate in Informatics Engineering with a focus on web development. Exper
 ## 🛠️ Tech Stack
 
 - **Frontend:** HTML, CSS, JavaScript
-- **Framework:** Laravel
-- **Database:** MySQL
 - **Version Control:** Git & GitHub
-- **Deployment:** Vercel
+- **Deployment:** Github Pages & Vercel 
 
 ## 📂 Project Structure
 
@@ -46,17 +45,6 @@ The portfolio is fully responsive and optimized for:
 - 📱 Mobile devices
 - 💻 Tablets
 - 🖥️ Desktop screens
-
-## 🚀 Deployment
-
-This portfolio is deployed on **Vercel** for fast and reliable hosting.
-
-### Deploy Your Own
-
-1. Fork this repository
-2. Connect your GitHub to [Vercel](https://vercel.com)
-3. Import the repository
-4. Deploy!
 
 ## 📧 Contact
 
